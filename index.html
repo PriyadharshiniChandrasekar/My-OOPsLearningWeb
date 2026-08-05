@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java OOPS Learning Hub</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f6f8fc;
+color:#222;
+}
+
+#tutorialPage{
+display:none;
+}
+
+/* Navbar */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:white;
+box-shadow:0 4px 10px rgba(0,0,0,.05);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#6c7bff;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:#333;
+font-weight:600;
+cursor:pointer;
+}
+
+nav ul li a:hover{
+color:#6c7bff;
+}
+
+/* Landing */
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:70px 8%;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.hero-text{
+flex:1;
+min-width:300px;
+}
+
+.hero-text h1{
+font-size:52px;
+line-height:1.2;
+margin-bottom:20px;
+}
+
+.hero-text h1 span{
+color:#6c7bff;
+}
+
+.hero-text p{
+font-size:18px;
+color:#555;
+line-height:1.7;
+margin-bottom:28px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 26px;
+background:#6c7bff;
+color:white;
+text-decoration:none;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+margin-right:12px;
+}
+
+.btn:hover{
+background:#5566f0;
+}
+
+.btn-outline{
+background:white;
+color:#6c7bff;
+border:2px solid #6c7bff;
+}
+
+.hero-img{
+flex:1;
+text-align:center;
+}
+
+.hero-img img{
+width:100%;
+max-width:520px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.features{
+padding:60px 8%;
+text-align:center;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.feature-card{
+background:white;
+padding:28px;
+border-radius:16px;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+footer{
+text-align:center;
+padding:25px;
+background:#6c7bff;
+color:white;
+margin-top:40px;
+}
+
+/* Tutorial Layout */
+.tutorial-wrapper{
+display:flex;
+}
+
+.sidebar{
+width:270px;
+height:100vh;
+overflow-y:auto;
+background:white;
+border-right:1px solid #ddd;
+position:fixed;
+left:0;
+top:0;
+}
+
+.sidebar h2{
+background:#7b8cff;
+color:white;
+padding:18px;
+text-align:center;
+}
+
+.sidebar a{
+display:block;
+padding:14px 18px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+color:#333;
+text-decoration:none;
+}
+
+.sidebar a:hover{
+background:#eef1ff;
+color:#7b8cff;
+}
+
+.content{
+margin-left:270px;
+padding:30px;
+width:calc(100% - 270px);
+}
+
+.card{
+display:none;
+background:white;
+padding:35px;
+border-radius:12px;
+box-shadow:0 4px 15px rgba(0,0,0,.1);
+margin-bottom:20px;
+line-height: 1.8;
+}
+
+.card.active{
+display:block;
+}
+
+.card h1, .card h2{
+color:#6c7bff;
+margin-bottom:15px;
+border-bottom: 3px solid #f0f2ff;
+padding-bottom: 10px;
+}
+
+.card h3 {
+    margin-top: 25px;
+    color: #444;
+    background: #f0f2ff;
+    padding: 5px 15px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.code{
+background:#1e1e1e;
+color:#76f7ad;
+padding:20px;
+border-radius:10px;
+margin:20px 0;
+white-space:pre;
+font-family:'Consolas', 'Monaco', monospace;
+overflow-x:auto;
+border-left: 6px solid #6c7bff;
+font-size: 14px;
+}
+
+.quiz-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9ff;
+    border-left: 4px solid #7b8cff;
+    border-radius: 0 8px 8px 0;
+}
+
+button.quiz-btn{
+padding:10px 20px;
+border:1px solid #7b8cff;
+background:white;
+color:#7b8cff;
+margin:10px 5px;
+border-radius:6px;
+cursor:pointer;
+transition: 0.3s;
+font-weight: bold;
+}
+
+button.quiz-btn:hover{
+background:#7b8cff;
+color:white;
+}
+
+#result{
+margin-top:20px;
+font-weight:bold;
+font-size:20px;
+padding: 15px;
+border-radius: 8px;
+display: none;
+text-align: center;
+}
+
+@media(max-width:768px){
+.sidebar{ position:relative; width:100%; height:auto; }
+.content{ margin-left:0; width: 100%; padding:15px; }
+.hero-text h1{ font-size: 34px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="landingPage">
+    <nav>
+        <div class="logo">Java OOPS</div>
+        <ul>
+            <li><a onclick="goTutorial()">Home</a></li>
+            <li><a onclick="goTutorial()">Tutorial</a></li>
+            <li><a onclick="goTutorial()">Quiz</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Master <span>Java OOPS</span> Concepts Easily</h1>
+            <p>Learn Java Object-Oriented Programming with real-time examples, full Java programs, quizzes, and beginner-friendly explanations.</p>
+            <button class="btn" onclick="goTutorial()">Start Learning</button>
+            <button class="btn btn-outline" onclick="goTutorial()">View Concepts</button>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200" alt="Coding">
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why Choose This Website?</h2>
+        <div class="grid">
+            <div class="feature-card"><h3>📘 Easy Concepts</h3><p>Simple explanations of all OOPS topics.</p></div>
+            <div class="feature-card"><h3>💻 Java Programs</h3><p>Practical coding examples for each topic.</p></div>
+            <div class="feature-card"><h3>🧠 Quiz</h3><p>Test knowledge with MCQ quiz.</p></div>
+            <div class="feature-card"><h3>📱 Responsive</h3><p>Works on mobile and desktop.</p></div>
+        </div>
+    </section>
+
+    <footer><p>© 2026 Java OOPS Learning Hub</p></footer>
+</div>
+
+<div id="tutorialPage">
+    <div class="tutorial-wrapper">
+        <div class="sidebar">
+            <h2>Java OOPS</h2>
+            <a onclick="showPage('home')">1. Home (Pillars)</a>
+            <a onclick="showPage('class')">2. Class & Object</a>
+            <a onclick="showPage('constructor')">3. Constructor</a>
+            <a onclick="showPage('encapsulation')">4. Encapsulation</a>
+            <a onclick="showPage('inheritance')">5. Inheritance</a>
+            <a onclick="showPage('polymorphism')">6. Polymorphism</a>
+            <a onclick="showPage('abstraction')">7. Abstraction</a>
+            <a onclick="showPage('quiz')">8. Final Quiz</a>
+            <a onclick="backLanding()">⬅ Back to Landing</a>
+        </div>
+
+        <div class="content">
+            <div class="card active" id="home">
+                <h1>Java OOPS: The Four Pillars</h1>
+                <p>Object-Oriented Programming (OOPs) is a paradigm that structures programs around <b>data</b> and <b>objects</b>, rather than logic and functions. It helps in making code modular and reusable.</p>
+                
+                <h3>Brief Explanation of the 4 Pillars:</h3>
+                <ul>
+                    <li><b>Inheritance:</b> Creating new classes from existing ones (Reusability).</li>
+                    <li><b>Polymorphism:</b> One interface, multiple methods (Flexibility).</li>
+                    <li><b>Encapsulation:</b> Binding data and methods together (Security).</li>
+                    <li><b>Abstraction:</b> Hiding complexity and showing only functionality (Simplicity).</li>
+                </ul>
+                <p>Click on the sidebar to explore each concept in detail with full code!</p>
+            </div>
+
+            <div class="card" id="class">
+                <h2>1. Class & Object</h2>
+                <p>A <b>Class</b> is a template or blueprint. An <b>Object</b> is a physical entity created from that blueprint.</p>
+                <h3>Real-Time Example:</h3>
+                <p>A "Car Design" on paper is the <b>Class</b>. The "BMW Car" parked in your garage is the <b>Object</b>.</p>
+                
+                <div class="code">
+// Full Java Program for Class & Object
+class Car {
+    String brand;
+    int speed;
+
+    void drive() {
+        System.out.println(brand + " is driving at " + speed + " km/h");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an Object of Car
+        Car myCar = new Car();
+        myCar.brand = "Toyota";
+        myCar.speed = 100;
+        myCar.drive(); // Calling method
+    }
+}</div>
+            </div>
+
+            <div class="card" id="constructor">
+                <h2>2. Constructor</h2>
+                <p>A <b>Constructor</b> is a special method used to initialize objects. It is called automatically when an object is created.</p>
+                <h3>Real-Time Example:</h3>
+                <p>When you sign up for a new <b>Email Account</b>, the system automatically assigns you a default storage space. That "initial setup" is done by a constructor.</p>
+                
+                <div class="code">
+// Full Java Program for Constructor
+class Student {
+    String name;
+
+    // Parameterized Constructor
+    Student(String studentName) {
+        name = studentName;
+        System.out.println("New student record created for: " + name);
+    }
+
+    void display() {
+        System.out.println("Hello " + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("Aryan"); // Automatic call
+        s1.display();
+    }
+}</div>
+            </div>
+
+            <div class="card" id="encapsulation">
+                <h2>3. Encapsulation</h2>
+                <p><b>Encapsulation</b> involves wrapping data (variables) and code (methods) together and keeping them safe from outside interference.</p>
+                <h3>Real-Time Example:</h3>
+                <p>A <b>School Bag</b>. Your books and pens are inside, and you decide who can take them out. In Java, we use <code>private</code> variables and <code>getter/setter</code> methods.</p>
+                
+                <div class="code">
+// Full Java Program for Encapsulation
+class Laptop {
+    private String password; // Private variable
+
+    // Setter
+    public void setPassword(String p) {
+        this.password = p;
+    }
+
+    // Getter
+    public void showPassword() {
+        System.out.println("Laptop Password is: " + password);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Laptop myLap = new Laptop();
+        myLap.setPassword("Admin@123");
+        myLap.showPassword();
+    }
+}</div>
+            </div>
+
+            <div class="card" id="inheritance">
+                <h2>4. Inheritance</h2>
+                <p><b>Inheritance</b> allows one class to acquire properties and methods of another class using the <code>extends</code> keyword.</p>
+                <h3>Real-Time Example:</h3>
+                <p>A <b>Son</b> inheriting property or eye color from his <b>Father</b>.</p>
+                
+                <div class="code">
+// Full Java Program for Inheritance
+class Animal {
+    void eat() { System.out.println("This animal eats food."); }
+}
+
+class Dog extends Animal {
+    void bark() { System.out.println("The dog barks loudly."); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();  // Inherited method
+        d.bark(); // Own method
+    }
+}</div>
+            </div>
+
+            <div class="card" id="polymorphism">
+                <h2>5. Polymorphism</h2>
+                <p><b>Polymorphism</b> means performing a single action in different ways. In Java, this is achieved by Overloading and Overriding.</p>
+                <h3>Real-Time Example:</h3>
+                <p>The <b>"+" Operator</b>. When used with numbers (2+2), it gives 4. When used with strings ("Hello"+"World"), it joins them. Same operator, different behavior!</p>
+                
+                <div class="code">
+// Full Java Program for Runtime Polymorphism
+class Shape {
+    void draw() { System.out.println("Drawing a shape..."); }
+}
+
+class Circle extends Shape {
+    void draw() { System.out.println("Drawing a Circle..."); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape s = new Circle(); // Parent reference, child object
+        s.draw(); // Calls Circle's draw()
+    }
+}</div>
+            </div>
+
+            <div class="card" id="abstraction">
+                <h2>6. Abstraction</h2>
+                <p><b>Abstraction</b> hides the complex internal logic and only shows the necessary functionality to the user.</p>
+                <h3>Real-Time Example:</h3>
+                <p><b>Driving a Car</b>. You know that pressing the brake stops the car, but you don't need to know the hydraulic pressure or internal engine mechanics to drive.</p>
+                
+                <div class="code">
+// Full Java Program for Abstraction
+abstract class Bank {
+    abstract void interestRate(); // Abstract method
+}
+
+class SBI extends Bank {
+    void interestRate() { System.out.println("SBI Interest Rate: 7%"); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bank myBank = new SBI();
+        myBank.interestRate();
+    }
+}</div>
+            </div>
+
+            <div class="card" id="quiz">
+                <h2>Final OOPS Quiz (7 Questions)</h2>
+                <div class="quiz-section">
+                    <p><b>1. Which keyword inherits a class?</b></p>
+                    <button class="quiz-btn" onclick="check(1, 'extends')">extends</button>
+                    <button class="quiz-btn" onclick="check(1, 'super')">super</button>
+                </div>
+                <div class="quiz-section">
+                    <p><b>2. What hides data for security?</b></p>
+                    <button class="quiz-btn" onclick="check(2, 'Encapsulation')">Encapsulation</button>
+                    <button class="quiz-btn" onclick="check(2, 'Abstraction')">Abstraction</button>
+                </div>
+                <div class="quiz-section">
+                    <p><b>3. What is "One name, many forms"?</b></p>
+                    <button class="quiz-btn" onclick="check(3, 'Polymorphism')">Polymorphism</button>
+                    <button class="quiz-btn" onclick="check(3, 'Interface')">Interface</button>
+                </div>
+                <div class="quiz-section">
+                    <p><b>4. Which method runs automatically?</b></p>
+                    <button class="quiz-btn" onclick="check(4, 'Constructor')">Constructor</button>
+                    <button class="quiz-btn" onclick="check(4, 'Main')">Main</button>
+                </div>
+                <div class="quiz-section">
+                    <p><b>5. Can we create an object of an abstract class?</b></p>
+                    <button class="quiz-btn" onclick="check(5, 'No')">No</button>
+                    <button class="quiz-btn" onclick="check(5, 'Yes')">Yes</button>
+                </div>
+                <div class="quiz-section">
+                    <p><b>6. What shows only functionality?</b></p>
+                    <button class="quiz-btn" onclick="check(6, 'Abstraction')">Abstraction</button>
+                    <button class="quiz-btn" onclick="check(6, 'Inheritance')">Inheritance</button>
+                </div>
+                <div class="quiz-section">
+                    <p><b>7. Keyword for accessing parent members?</b></p>
+                    <button class="quiz-btn" onclick="check(7, 'super')">super</button>
+                    <button class="quiz-btn" onclick="check(7, 'this')">this</button>
+                </div>
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function goTutorial(){
+    document.getElementById("landingPage").style.display="none";
+    document.getElementById("tutorialPage").style.display="block";
+    window.scrollTo(0,0);
+}
+
+function backLanding(){
+    document.getElementById("tutorialPage").style.display="none";
+    document.getElementById("landingPage").style.display="block";
+}
+
+function showPage(id){
+    let cards=document.querySelectorAll(".card");
+    cards.forEach(card=>card.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    document.getElementById("result").style.display="none";
+}
+
+function check(qNum, ans){
+    const resultDiv = document.getElementById("result");
+    resultDiv.style.display = "block";
+    const correct = {1:'extends', 2:'Encapsulation', 3:'Polymorphism', 4:'Constructor', 5:'No', 6:'Abstraction', 7:'super'};
+
+    if(ans === correct[qNum]){
+        resultDiv.innerHTML = "✅ Question " + qNum + " is Correct!";
+        resultDiv.style.background = "#d1fae5";
+        resultDiv.style.color = "#065f46";
+    } else {
+        resultDiv.innerHTML = "❌ Question " + qNum + " is Incorrect!";
+        resultDiv.style.background = "#fee2e2";
+        resultDiv.style.color = "#991b1b";
+    }
+}
+</script>
+
+</body>
+</html>
