@@ -4,6 +4,8 @@
 
 ### Master Java Object-Oriented Programming — the easy way.
 
+🏠 Landing Page
+
 A clean, interactive single-page website that teaches all 4 pillars of OOPs with real-time examples, full Java programs, and a fun quiz at the end.
 <img width="1615" height="965" alt="Screenshot 2026-08-05 235124" src="https://github.com/user-attachments/assets/ca1ff783-4d44-4ecf-a125-d495ae3500dc" />
 
