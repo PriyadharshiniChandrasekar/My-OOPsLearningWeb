@@ -4,10 +4,35 @@
 
 ### Master Java Object-Oriented Programming — the easy way.
 
+
+
 🏠 Landing Page
 
 A clean, interactive single-page website that teaches all 4 pillars of OOPs with real-time examples, full Java programs, and a fun quiz at the end.
 <img width="1615" height="965" alt="Screenshot 2026-08-05 235124" src="https://github.com/user-attachments/assets/ca1ff783-4d44-4ecf-a125-d495ae3500dc" />
+
+
+📚 Tutorial Sidebar & Content
+
+<img width="1620" height="971" alt="Screenshot 2026-08-05 235153" src="https://github.com/user-attachments/assets/02bdf71d-0bdb-440c-9c26-b885177d15fd" />
+
+
+
+<img width="1612" height="963" alt="Screenshot 2026-08-05 235300" src="https://github.com/user-attachments/assets/f347e1d6-9bd8-4a02-9725-e4d8219f47f9" />
+
+
+🧠 Final Quiz Section
+
+
+<img width="1606" height="965" alt="Screenshot 2026-08-05 235347" src="https://github.com/user-attachments/assets/8bbc1395-255f-4d7a-a947-c919149ee1e4" />
+
+
+<img width="1608" height="977" alt="Screenshot 2026-08-05 235409" src="https://github.com/user-attachments/assets/eb62c460-3a37-41a3-81b8-eb51b9144f52" />
+
+
+
+
+
 
 
 
