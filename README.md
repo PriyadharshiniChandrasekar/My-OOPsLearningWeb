@@ -13,17 +13,6 @@ A clean, interactive single-page website that teaches all 4 pillars of OOPs with
 
 </div>
 
----
-
-## 🖼️ Landing Page Preview
-
-<div align="center">
-<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200" alt="Java OOPs Learning Hub Banner" width="100%">
-</div>
-
-<p align="center"><i>Add your own landing page screenshot here → replace the image link above or drop a file at <code>assets/landing-page.png</code> and update the path.</i></p>
-
----
 
 ## ✨ Features
 
