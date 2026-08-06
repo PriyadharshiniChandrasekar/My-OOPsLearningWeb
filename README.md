@@ -27,20 +27,6 @@ A clean, interactive single-page website that teaches all 4 pillars of OOPs with
 
 ---
 
-## 📸 Screenshots
-
-<div align="center">
-
-### 🏠 Landing Page
-<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&h=450&fit=crop" alt="Landing Page" width="80%"><br><br>
-
-### 📚 Tutorial Sidebar & Content
-<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=450&fit=crop" alt="Tutorial Page" width="80%"><br><br>
-
-### 🧠 Final Quiz Section
-<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&h=450&fit=crop" alt="Quiz Section" width="80%">
-
-</div>
 
 ---
 
